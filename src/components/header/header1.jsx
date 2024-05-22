@@ -1,13 +1,21 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { ColorModeContext } from "../../Theme.jsx";
 import { Box, IconButton, Stack, Typography, useTheme } from "@mui/material";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
-
-const header1 = () => {
+const Header1 = () => {
   const colorMode = useContext(ColorModeContext);
   const theme = useTheme();
+
+  const handleClick = () => {
+    const newMode = theme.palette.mode === "dark" ? "light" : "dark";
+    localStorage.setItem("mode", newMode);
+    colorMode.toggleColorMode();
+  };
+
   return (
     <Box
       sx={{
@@ -45,38 +53,38 @@ const header1 = () => {
 
         <div>
           {theme.palette.mode === "light" ? (
-            <IconButton
-              onClick={() => {
-                localStorage.setItem(
-                  "mode",
-                  theme.palette.mode === "dark" ? "light" : "dark"
-                );
-                colorMode.toggleColorMode();
-              }}
-              color="inherit"
-            >
+            <IconButton onClick={handleClick} color="inherit">
               <LightModeOutlined fontSize="small" />
             </IconButton>
           ) : (
-            <IconButton
-              onClick={() => {
-                localStorage.setItem(
-                  "mode",
-                  theme.palette.mode === "dark" ? "light" : "dark"
-                );
-                colorMode.toggleColorMode();
-              }}
-              color="inherit"
-            >
+            <IconButton onClick={handleClick} color="inherit">
               <DarkModeOutlined fontSize="small" />
             </IconButton>
           )}
         </div>
 
+        <TwitterIcon
+          sx={{
+            fontSize: "16px",
+            color: "#fff",
+          }}
+        />
+        <FacebookIcon
+          sx={{
+            fontSize: "16px",
+            mx: 1,
+            color: "#fff",
+          }}
+        />
+        <InstagramIcon
+          sx={{
+            fontSize: "16px",
+            color: "#fff",
+          }}
+        />
       </Stack>
-
     </Box>
   );
 };
 
-export default header1;
+export default Header1;
