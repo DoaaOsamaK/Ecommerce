@@ -11,7 +11,9 @@ function App() {
       <ColorModeContext.Provider 
 // @ts-ignore
       value={colorMode}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider 
+// @ts-ignore
+        theme={theme}>
           <CssBaseline />
           <Header1 />
           <Header2 />
