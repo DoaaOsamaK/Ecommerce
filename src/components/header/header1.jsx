@@ -1,14 +1,19 @@
 import React from 'react'
 import   { useContext } from "react";
 import { ColorModeContext } from "../../Theme.jsx";
-import { IconButton, useTheme } from "@mui/material";
+import { Box, IconButton, useTheme } from "@mui/material";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
 const header1 = () => {
   const colorMode = useContext(ColorModeContext);
   const theme = useTheme();
   return (
-    <div>
+    <Box sx={{
+      bgcolor: "#5c607b"
+    }}>
+
+
+      <div>
       {theme.palette.mode === "light" ? (
         <IconButton
           onClick={() => {
@@ -36,7 +41,8 @@ const header1 = () => {
           <DarkModeOutlined />
         </IconButton>
       )}
-    </div>
+      </div>
+    </Box>
   );
 };
 
