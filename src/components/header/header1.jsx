@@ -103,8 +103,11 @@ const Header1 = () => {
           </div>
 
           {/* languages */}
-          <List component="nav" aria-label="Device settings"
-          sx={{ p: 0, m: 0 }}>
+          <List
+            component="nav"
+            aria-label="Device settings"
+            sx={{ p: 0, m: 0 }}
+          >
             <ListItemButton
               id="lock-button"
               aria-haspopup="listbox"
