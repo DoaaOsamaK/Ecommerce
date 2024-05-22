@@ -23,6 +23,7 @@ const Header1 = () => {
       }}
     >
       <Stack direction={"row"} alignItems={"center"}>
+        {/* hot */}
         <Typography
           sx={{
             mr: 2,
@@ -38,6 +39,8 @@ const Header1 = () => {
           HOT
         </Typography>
 
+
+        {/* offer statment  */}
         <Typography
           sx={{
             fontSize: "12px",
@@ -49,8 +52,10 @@ const Header1 = () => {
           Free Express Shipping
         </Typography>
 
+         {/* space */}
         <Box flexGrow={1} />
 
+        {/* dark/light mood */}
         <div>
           {theme.palette.mode === "light" ? (
             <IconButton onClick={handleClick} color="inherit">
@@ -63,6 +68,9 @@ const Header1 = () => {
           )}
         </div>
 
+        
+
+         {/* icons */}
         <TwitterIcon
           sx={{
             fontSize: "16px",
@@ -82,9 +90,11 @@ const Header1 = () => {
             color: "#fff",
           }}
         />
+
       </Stack>
     </Box>
   );
 };
+
 
 export default Header1;
