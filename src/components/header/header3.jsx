@@ -31,7 +31,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import Links from "./Links.jsx";
+import Links from "./Links";
 
 const Header3 = () => {
   const [anchorEl, setAnchorEl] = useState(null);

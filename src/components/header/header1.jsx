@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { ColorModeContext } from "../../Theme.jsx";
+import { useContext, useState } from "react";
+import { ColorModeContext } from "../../theme";
 import {
   Box,
   Container,
@@ -17,25 +17,18 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
+import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 
-const options = ["EN", "AR"];
+const options = ["AR", "EN"];
 
 const Header1 = () => {
   const colorMode = useContext(ColorModeContext);
   const theme = useTheme();
-
-  const handleClick = () => {
-    const newMode = theme.palette.mode === "dark" ? "light" : "dark";
-    localStorage.setItem("mode", newMode);
-    colorMode.toggleColorMode();
-  };
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(1);
   const open = Boolean(anchorEl);
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
@@ -53,12 +46,14 @@ const Header1 = () => {
   return (
     <Box
       sx={{
-        bgcolor: "#5c607b",
+        bgcolor: "#2B3445",
+        py: "4px",
+        borderBottomRightRadius: 4,
+        borderBottomLeftRadius: 4,
       }}
     >
       <Container>
         <Stack direction={"row"} alignItems={"center"}>
-          {/* hot */}
           <Typography
             sx={{
               mr: 2,
@@ -74,7 +69,6 @@ const Header1 = () => {
             HOT
           </Typography>
 
-          {/* offer statment  */}
           <Typography
             sx={{
               fontSize: "12px",
@@ -86,46 +80,62 @@ const Header1 = () => {
             Free Express Shipping
           </Typography>
 
-          {/* space */}
           <Box flexGrow={1} />
 
-          {/* dark/light mood */}
           <div>
             {theme.palette.mode === "light" ? (
-              <IconButton onClick={handleClick} color="inherit">
+              <IconButton
+                onClick={() => {
+                  localStorage.setItem(
+                    "mode",
+                    theme.palette.mode === "dark" ? "light" : "dark"
+                  );
+                  colorMode.toggleColorMode();
+                }}
+                color="inherit"
+              >
                 <LightModeOutlined sx={{ fontSize: "16px", color: "#fff" }} />
               </IconButton>
             ) : (
-              <IconButton onClick={handleClick} color="inherit">
-                <DarkModeOutlined sx={{ fontSize: "16px", color: "#fff" }} />
+              <IconButton
+                onClick={() => {
+                  localStorage.setItem(
+                    "mode",
+                    theme.palette.mode === "dark" ? "light" : "dark"
+                  );
+                  colorMode.toggleColorMode();
+                }}
+                color="inherit"
+              >
+                <DarkModeOutlined sx={{ fontSize: "16px" }} />
               </IconButton>
             )}
           </div>
 
-          {/* languages */}
           <List
             component="nav"
             aria-label="Device settings"
             sx={{ p: 0, m: 0 }}
           >
-            <ListItemButton
+            <ListItem
               id="lock-button"
               aria-haspopup="listbox"
               aria-controls="lock-menu"
               aria-label="when device is locked"
               aria-expanded={open ? "true" : undefined}
               onClick={handleClickListItem}
-              sx={{ "&:hover": { courser: "pointer" }, px: 1 }}
+              sx={{ "&:hover": { cursor: "pointer" }, px: 1 }}
             >
               <ListItemText
                 sx={{
-                  ".MuiTypography-root": { fontSize: "10px", color: "#fff" },
+                  ".MuiTypography-root": { fontSize: "11px", color: "#fff" },
                 }}
                 secondary={options[selectedIndex]}
               />
               <ExpandMore sx={{ fontSize: "16px", color: "#fff" }} />
-            </ListItemButton>
+            </ListItem>
           </List>
+
           <Menu
             id="lock-menu"
             anchorEl={anchorEl}
@@ -148,7 +158,6 @@ const Header1 = () => {
             ))}
           </Menu>
 
-          {/* icons */}
           <TwitterIcon
             sx={{
               fontSize: "16px",

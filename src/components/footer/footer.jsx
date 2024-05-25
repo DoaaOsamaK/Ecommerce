@@ -31,9 +31,9 @@ const Footer = () => {
           variant="text"
           color="primary"
         >
-          Augalassia
+          Ali Hassan
         </Button>
-      ©2024
+      ©2023
     </Typography>
   </Box>
   );

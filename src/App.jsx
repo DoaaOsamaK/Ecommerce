@@ -4,7 +4,7 @@ import Header3 from "./components/header/Header3.jsx";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme.js";
 import Hero from "./components/hero/Hero.jsx";
-import Main from "./components/mainContent/main.jsx";
+import Main from "./components/main/main.jsx";
 import Footer from "./components/footer/footer.jsx";
 import ScrollToTop from "./components/scroll/ScrollToTop.jsx";
 
